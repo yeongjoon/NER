@@ -1,0 +1,652 @@
+04/08/2020 16:40:13 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 4, distributed training: False, 16-bits training: False
+04/08/2020 16:40:14 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-multilingual-cased-config.json from cache at /home/yeongjoon/.cache/torch/transformers/45629519f3117b89d89fd9c740073d8e4c1f0a70f9842476185100a8afe715d1.893eae5c77904d1e9175faf98909639d3eb20cc7e13e2be395de9a0d8a0dad52
+04/08/2020 16:40:14 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 25,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "B-LOC",
+    "1": "B-LOCderiv",
+    "10": "B-PERderiv",
+    "11": "B-PERpart",
+    "12": "I-LOC",
+    "13": "I-LOCderiv",
+    "14": "I-LOCpart",
+    "15": "I-ORG",
+    "16": "I-ORGderiv",
+    "17": "I-ORGpart",
+    "18": "I-OTH",
+    "19": "I-OTHderiv",
+    "2": "B-LOCpart",
+    "20": "I-OTHpart",
+    "21": "I-PER",
+    "22": "I-PERderiv",
+    "23": "I-PERpart",
+    "24": "O",
+    "3": "B-ORG",
+    "4": "B-ORGderiv",
+    "5": "B-ORGpart",
+    "6": "B-OTH",
+    "7": "B-OTHderiv",
+    "8": "B-OTHpart",
+    "9": "B-PER"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "B-LOC": 0,
+    "B-LOCderiv": 1,
+    "B-LOCpart": 2,
+    "B-ORG": 3,
+    "B-ORGderiv": 4,
+    "B-ORGpart": 5,
+    "B-OTH": 6,
+    "B-OTHderiv": 7,
+    "B-OTHpart": 8,
+    "B-PER": 9,
+    "B-PERderiv": 10,
+    "B-PERpart": 11,
+    "I-LOC": 12,
+    "I-LOCderiv": 13,
+    "I-LOCpart": 14,
+    "I-ORG": 15,
+    "I-ORGderiv": 16,
+    "I-ORGpart": 17,
+    "I-OTH": 18,
+    "I-OTHderiv": 19,
+    "I-OTHpart": 20,
+    "I-PER": 21,
+    "I-PERderiv": 22,
+    "I-PERpart": 23,
+    "O": 24
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 119547
+}
+
+04/08/2020 16:40:14 - INFO - __main__ -   Tokenizer arguments: {'do_lower_case': False}
+04/08/2020 16:40:15 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-multilingual-cased-config.json from cache at /home/yeongjoon/.cache/torch/transformers/45629519f3117b89d89fd9c740073d8e4c1f0a70f9842476185100a8afe715d1.893eae5c77904d1e9175faf98909639d3eb20cc7e13e2be395de9a0d8a0dad52
+04/08/2020 16:40:15 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 2,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 119547
+}
+
+04/08/2020 16:40:15 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-multilingual-cased-vocab.txt from cache at /home/yeongjoon/.cache/torch/transformers/96435fa287fbf7e469185f1062386e05a075cadbf6838b74da22bf64b080bc32.99bcd55fc66f4f3360bc49ba472b940b8dcf223ea6a345deb969d607ca900729
+04/08/2020 16:40:17 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-multilingual-cased-pytorch_model.bin from cache at /home/yeongjoon/.cache/torch/transformers/5b5b80054cd2c95a946a8e0ce0b93f56326dff9fbda6a6c3e02de3c91c918342.7131dcb754361639a7d5526985f880879c9bfd144b65a0bf50590bddb7de9059
+04/08/2020 16:40:21 - INFO - transformers.modeling_utils -   Weights of BertForTokenClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+04/08/2020 16:40:21 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+04/08/2020 16:40:25 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='/home/yeongjoon/data/GermEVAL2014_NER/', device=device(type='cuda'), do_eval=True, do_lower_case=False, do_predict=True, do_train=False, eval_all_checkpoints=False, evaluate_during_training=False, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=1, keep_accents=None, labels='/home/yeongjoon/data/GermEVAL2014_NER/labels.txt', learning_rate=5e-05, local_rank=-1, logging_steps=500, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-multilingual-cased', model_type='bert', n_gpu=4, no_cuda=False, num_train_epochs=3.0, output_dir='germeval-distributed-model', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=8, per_gpu_train_batch_size=8, save_steps=750, seed=1, server_ip='', server_port='', strip_accents=None, tokenizer_name='', use_fast=None, warmup_steps=0, weight_decay=0.0)
+04/08/2020 16:40:25 - INFO - transformers.configuration_utils -   loading configuration file germeval-distributed-model/config.json
+04/08/2020 16:40:25 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 25,
+  "architectures": [
+    "BertForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "B-LOC",
+    "1": "B-LOCderiv",
+    "2": "B-LOCpart",
+    "3": "B-ORG",
+    "4": "B-ORGderiv",
+    "5": "B-ORGpart",
+    "6": "B-OTH",
+    "7": "B-OTHderiv",
+    "8": "B-OTHpart",
+    "9": "B-PER",
+    "10": "B-PERderiv",
+    "11": "B-PERpart",
+    "12": "I-LOC",
+    "13": "I-LOCderiv",
+    "14": "I-LOCpart",
+    "15": "I-ORG",
+    "16": "I-ORGderiv",
+    "17": "I-ORGpart",
+    "18": "I-OTH",
+    "19": "I-OTHderiv",
+    "20": "I-OTHpart",
+    "21": "I-PER",
+    "22": "I-PERderiv",
+    "23": "I-PERpart",
+    "24": "O"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "B-LOC": 0,
+    "B-LOCderiv": 1,
+    "B-LOCpart": 2,
+    "B-ORG": 3,
+    "B-ORGderiv": 4,
+    "B-ORGpart": 5,
+    "B-OTH": 6,
+    "B-OTHderiv": 7,
+    "B-OTHpart": 8,
+    "B-PER": 9,
+    "B-PERderiv": 10,
+    "B-PERpart": 11,
+    "I-LOC": 12,
+    "I-LOCderiv": 13,
+    "I-LOCpart": 14,
+    "I-ORG": 15,
+    "I-ORGderiv": 16,
+    "I-ORGpart": 17,
+    "I-OTH": 18,
+    "I-OTHderiv": 19,
+    "I-OTHpart": 20,
+    "I-PER": 21,
+    "I-PERderiv": 22,
+    "I-PERpart": 23,
+    "O": 24
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 119547
+}
+
+04/08/2020 16:40:25 - INFO - transformers.tokenization_utils -   Model name 'germeval-distributed-model' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc, bert-base-german-dbmdz-cased, bert-base-german-dbmdz-uncased, bert-base-finnish-cased-v1, bert-base-finnish-uncased-v1, bert-base-dutch-cased). Assuming 'germeval-distributed-model' is a path, a model identifier, or url to a directory containing tokenizer files.
+04/08/2020 16:40:25 - INFO - transformers.tokenization_utils -   Didn't find file germeval-distributed-model/added_tokens.json. We won't load it.
+04/08/2020 16:40:25 - INFO - transformers.tokenization_utils -   loading file germeval-distributed-model/vocab.txt
+04/08/2020 16:40:25 - INFO - transformers.tokenization_utils -   loading file None
+04/08/2020 16:40:25 - INFO - transformers.tokenization_utils -   loading file germeval-distributed-model/special_tokens_map.json
+04/08/2020 16:40:25 - INFO - transformers.tokenization_utils -   loading file germeval-distributed-model/tokenizer_config.json
+04/08/2020 16:40:25 - INFO - __main__ -   Evaluate the following checkpoints: ['germeval-distributed-model']
+04/08/2020 16:40:25 - INFO - transformers.configuration_utils -   loading configuration file germeval-distributed-model/config.json
+04/08/2020 16:40:25 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 25,
+  "architectures": [
+    "BertForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "B-LOC",
+    "1": "B-LOCderiv",
+    "2": "B-LOCpart",
+    "3": "B-ORG",
+    "4": "B-ORGderiv",
+    "5": "B-ORGpart",
+    "6": "B-OTH",
+    "7": "B-OTHderiv",
+    "8": "B-OTHpart",
+    "9": "B-PER",
+    "10": "B-PERderiv",
+    "11": "B-PERpart",
+    "12": "I-LOC",
+    "13": "I-LOCderiv",
+    "14": "I-LOCpart",
+    "15": "I-ORG",
+    "16": "I-ORGderiv",
+    "17": "I-ORGpart",
+    "18": "I-OTH",
+    "19": "I-OTHderiv",
+    "20": "I-OTHpart",
+    "21": "I-PER",
+    "22": "I-PERderiv",
+    "23": "I-PERpart",
+    "24": "O"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "B-LOC": 0,
+    "B-LOCderiv": 1,
+    "B-LOCpart": 2,
+    "B-ORG": 3,
+    "B-ORGderiv": 4,
+    "B-ORGpart": 5,
+    "B-OTH": 6,
+    "B-OTHderiv": 7,
+    "B-OTHpart": 8,
+    "B-PER": 9,
+    "B-PERderiv": 10,
+    "B-PERpart": 11,
+    "I-LOC": 12,
+    "I-LOCderiv": 13,
+    "I-LOCpart": 14,
+    "I-ORG": 15,
+    "I-ORGderiv": 16,
+    "I-ORGpart": 17,
+    "I-OTH": 18,
+    "I-OTHderiv": 19,
+    "I-OTHpart": 20,
+    "I-PER": 21,
+    "I-PERderiv": 22,
+    "I-PERpart": 23,
+    "O": 24
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 119547
+}
+
+04/08/2020 16:40:25 - INFO - transformers.modeling_utils -   loading weights file germeval-distributed-model/pytorch_model.bin
+04/08/2020 16:40:30 - INFO - __main__ -   Loading features from cached file /home/yeongjoon/data/GermEVAL2014_NER/cached_dev_bert-base-multilingual-cased_128
+04/08/2020 16:40:30 - INFO - __main__ -   ***** Running evaluation  *****
+04/08/2020 16:40:30 - INFO - __main__ -     Num examples = 2200
+04/08/2020 16:40:30 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/69 [00:00<?, ?it/s]/home/yeongjoon/py36_torch/lib/python3.6/site-packages/torch/nn/parallel/_functions.py:61: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+Evaluating:   1%|▏         | 1/69 [00:10<11:57, 10.54s/it]Evaluating:   3%|▎         | 2/69 [00:10<08:18,  7.44s/it]Evaluating:   4%|▍         | 3/69 [00:10<05:47,  5.26s/it]Evaluating:   6%|▌         | 4/69 [00:11<04:02,  3.73s/it]Evaluating:   7%|▋         | 5/69 [00:11<02:50,  2.67s/it]Evaluating:   9%|▊         | 6/69 [00:11<02:01,  1.92s/it]Evaluating:  10%|█         | 7/69 [00:11<01:26,  1.40s/it]Evaluating:  12%|█▏        | 8/69 [00:11<01:03,  1.04s/it]Evaluating:  13%|█▎        | 9/69 [00:11<00:46,  1.28it/s]Evaluating:  14%|█▍        | 10/69 [00:12<00:35,  1.66it/s]Evaluating:  16%|█▌        | 11/69 [00:12<00:27,  2.10it/s]Evaluating:  17%|█▋        | 12/69 [00:12<00:22,  2.58it/s]Evaluating:  19%|█▉        | 13/69 [00:12<00:18,  3.06it/s]Evaluating:  20%|██        | 14/69 [00:12<00:15,  3.53it/s]Evaluating:  22%|██▏       | 15/69 [00:13<00:13,  3.95it/s]Evaluating:  23%|██▎       | 16/69 [00:13<00:12,  4.27it/s]Evaluating:  25%|██▍       | 17/69 [00:13<00:11,  4.56it/s]Evaluating:  26%|██▌       | 18/69 [00:13<00:10,  4.77it/s]Evaluating:  28%|██▊       | 19/69 [00:13<00:10,  4.93it/s]Evaluating:  29%|██▉       | 20/69 [00:14<00:09,  5.03it/s]Evaluating:  30%|███       | 21/69 [00:14<00:09,  5.14it/s]Evaluating:  32%|███▏      | 22/69 [00:14<00:09,  5.20it/s]Evaluating:  33%|███▎      | 23/69 [00:14<00:08,  5.26it/s]Evaluating:  35%|███▍      | 24/69 [00:14<00:08,  5.35it/s]Evaluating:  36%|███▌      | 25/69 [00:14<00:08,  5.40it/s]Evaluating:  38%|███▊      | 26/69 [00:15<00:07,  5.39it/s]Evaluating:  39%|███▉      | 27/69 [00:15<00:07,  5.41it/s]Evaluating:  41%|████      | 28/69 [00:15<00:07,  5.38it/s]Evaluating:  42%|████▏     | 29/69 [00:15<00:07,  5.38it/s]Evaluating:  43%|████▎     | 30/69 [00:15<00:07,  5.40it/s]Evaluating:  45%|████▍     | 31/69 [00:16<00:07,  5.37it/s]Evaluating:  46%|████▋     | 32/69 [00:16<00:06,  5.39it/s]Evaluating:  48%|████▊     | 33/69 [00:16<00:06,  5.43it/s]Evaluating:  49%|████▉     | 34/69 [00:16<00:06,  5.43it/s]Evaluating:  51%|█████     | 35/69 [00:16<00:06,  5.45it/s]Evaluating:  52%|█████▏    | 36/69 [00:16<00:06,  5.38it/s]Evaluating:  54%|█████▎    | 37/69 [00:17<00:05,  5.34it/s]Evaluating:  55%|█████▌    | 38/69 [00:17<00:05,  5.31it/s]Evaluating:  57%|█████▋    | 39/69 [00:17<00:05,  5.28it/s]Evaluating:  58%|█████▊    | 40/69 [00:17<00:05,  5.15it/s]Evaluating:  59%|█████▉    | 41/69 [00:17<00:05,  5.10it/s]Evaluating:  61%|██████    | 42/69 [00:18<00:05,  5.18it/s]Evaluating:  62%|██████▏   | 43/69 [00:18<00:04,  5.21it/s]Evaluating:  64%|██████▍   | 44/69 [00:18<00:04,  5.23it/s]Evaluating:  65%|██████▌   | 45/69 [00:18<00:04,  5.25it/s]Evaluating:  67%|██████▋   | 46/69 [00:18<00:04,  5.27it/s]Evaluating:  68%|██████▊   | 47/69 [00:19<00:04,  5.30it/s]Evaluating:  70%|██████▉   | 48/69 [00:19<00:03,  5.29it/s]Evaluating:  71%|███████   | 49/69 [00:19<00:03,  5.26it/s]Evaluating:  72%|███████▏  | 50/69 [00:19<00:03,  5.28it/s]Evaluating:  74%|███████▍  | 51/69 [00:19<00:03,  5.36it/s]Evaluating:  75%|███████▌  | 52/69 [00:20<00:03,  5.33it/s]Evaluating:  77%|███████▋  | 53/69 [00:20<00:02,  5.43it/s]Evaluating:  78%|███████▊  | 54/69 [00:20<00:02,  5.40it/s]Evaluating:  80%|███████▉  | 55/69 [00:20<00:02,  5.32it/s]Evaluating:  81%|████████  | 56/69 [00:20<00:02,  5.29it/s]Evaluating:  83%|████████▎ | 57/69 [00:20<00:02,  5.30it/s]Evaluating:  84%|████████▍ | 58/69 [00:21<00:02,  5.27it/s]Evaluating:  86%|████████▌ | 59/69 [00:21<00:01,  5.27it/s]Evaluating:  87%|████████▋ | 60/69 [00:21<00:01,  5.28it/s]Evaluating:  88%|████████▊ | 61/69 [00:21<00:01,  5.29it/s]Evaluating:  90%|████████▉ | 62/69 [00:21<00:01,  5.31it/s]Evaluating:  91%|█████████▏| 63/69 [00:22<00:01,  5.24it/s]Evaluating:  93%|█████████▎| 64/69 [00:22<00:00,  5.23it/s]Evaluating:  94%|█████████▍| 65/69 [00:22<00:00,  5.28it/s]Evaluating:  96%|█████████▌| 66/69 [00:22<00:00,  5.29it/s]Evaluating:  97%|█████████▋| 67/69 [00:22<00:00,  5.30it/s]Evaluating:  99%|█████████▊| 68/69 [00:23<00:00,  5.19it/s]Evaluating: 100%|██████████| 69/69 [00:23<00:00,  5.24it/s]Evaluating: 100%|██████████| 69/69 [00:23<00:00,  2.97it/s]
+04/08/2020 16:40:54 - INFO - __main__ -   ***** Eval results  *****
+04/08/2020 16:40:54 - INFO - __main__ -     f1 = 0.8621068032187271
+04/08/2020 16:40:54 - INFO - __main__ -     loss = 0.07407957920129749
+04/08/2020 16:40:54 - INFO - __main__ -     precision = 0.8435934144595562
+04/08/2020 16:40:54 - INFO - __main__ -     recall = 0.8814510097232611
+04/08/2020 16:40:54 - INFO - transformers.configuration_utils -   loading configuration file germeval-distributed-model/config.json
+04/08/2020 16:40:54 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 25,
+  "architectures": [
+    "BertForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "B-LOC",
+    "1": "B-LOCderiv",
+    "2": "B-LOCpart",
+    "3": "B-ORG",
+    "4": "B-ORGderiv",
+    "5": "B-ORGpart",
+    "6": "B-OTH",
+    "7": "B-OTHderiv",
+    "8": "B-OTHpart",
+    "9": "B-PER",
+    "10": "B-PERderiv",
+    "11": "B-PERpart",
+    "12": "I-LOC",
+    "13": "I-LOCderiv",
+    "14": "I-LOCpart",
+    "15": "I-ORG",
+    "16": "I-ORGderiv",
+    "17": "I-ORGpart",
+    "18": "I-OTH",
+    "19": "I-OTHderiv",
+    "20": "I-OTHpart",
+    "21": "I-PER",
+    "22": "I-PERderiv",
+    "23": "I-PERpart",
+    "24": "O"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "B-LOC": 0,
+    "B-LOCderiv": 1,
+    "B-LOCpart": 2,
+    "B-ORG": 3,
+    "B-ORGderiv": 4,
+    "B-ORGpart": 5,
+    "B-OTH": 6,
+    "B-OTHderiv": 7,
+    "B-OTHpart": 8,
+    "B-PER": 9,
+    "B-PERderiv": 10,
+    "B-PERpart": 11,
+    "I-LOC": 12,
+    "I-LOCderiv": 13,
+    "I-LOCpart": 14,
+    "I-ORG": 15,
+    "I-ORGderiv": 16,
+    "I-ORGpart": 17,
+    "I-OTH": 18,
+    "I-OTHderiv": 19,
+    "I-OTHpart": 20,
+    "I-PER": 21,
+    "I-PERderiv": 22,
+    "I-PERpart": 23,
+    "O": 24
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 119547
+}
+
+04/08/2020 16:40:54 - INFO - transformers.tokenization_utils -   Model name 'germeval-distributed-model' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc, bert-base-german-dbmdz-cased, bert-base-german-dbmdz-uncased, bert-base-finnish-cased-v1, bert-base-finnish-uncased-v1, bert-base-dutch-cased). Assuming 'germeval-distributed-model' is a path, a model identifier, or url to a directory containing tokenizer files.
+04/08/2020 16:40:54 - INFO - transformers.tokenization_utils -   Didn't find file germeval-distributed-model/added_tokens.json. We won't load it.
+04/08/2020 16:40:54 - INFO - transformers.tokenization_utils -   loading file germeval-distributed-model/vocab.txt
+04/08/2020 16:40:54 - INFO - transformers.tokenization_utils -   loading file None
+04/08/2020 16:40:54 - INFO - transformers.tokenization_utils -   loading file germeval-distributed-model/special_tokens_map.json
+04/08/2020 16:40:54 - INFO - transformers.tokenization_utils -   loading file germeval-distributed-model/tokenizer_config.json
+04/08/2020 16:40:54 - INFO - transformers.configuration_utils -   loading configuration file germeval-distributed-model/config.json
+04/08/2020 16:40:54 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 25,
+  "architectures": [
+    "BertForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "B-LOC",
+    "1": "B-LOCderiv",
+    "2": "B-LOCpart",
+    "3": "B-ORG",
+    "4": "B-ORGderiv",
+    "5": "B-ORGpart",
+    "6": "B-OTH",
+    "7": "B-OTHderiv",
+    "8": "B-OTHpart",
+    "9": "B-PER",
+    "10": "B-PERderiv",
+    "11": "B-PERpart",
+    "12": "I-LOC",
+    "13": "I-LOCderiv",
+    "14": "I-LOCpart",
+    "15": "I-ORG",
+    "16": "I-ORGderiv",
+    "17": "I-ORGpart",
+    "18": "I-OTH",
+    "19": "I-OTHderiv",
+    "20": "I-OTHpart",
+    "21": "I-PER",
+    "22": "I-PERderiv",
+    "23": "I-PERpart",
+    "24": "O"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "B-LOC": 0,
+    "B-LOCderiv": 1,
+    "B-LOCpart": 2,
+    "B-ORG": 3,
+    "B-ORGderiv": 4,
+    "B-ORGpart": 5,
+    "B-OTH": 6,
+    "B-OTHderiv": 7,
+    "B-OTHpart": 8,
+    "B-PER": 9,
+    "B-PERderiv": 10,
+    "B-PERpart": 11,
+    "I-LOC": 12,
+    "I-LOCderiv": 13,
+    "I-LOCpart": 14,
+    "I-ORG": 15,
+    "I-ORGderiv": 16,
+    "I-ORGpart": 17,
+    "I-OTH": 18,
+    "I-OTHderiv": 19,
+    "I-OTHpart": 20,
+    "I-PER": 21,
+    "I-PERderiv": 22,
+    "I-PERpart": 23,
+    "O": 24
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 119547
+}
+
+04/08/2020 16:40:54 - INFO - transformers.modeling_utils -   loading weights file germeval-distributed-model/pytorch_model.bin
+04/08/2020 16:40:58 - INFO - __main__ -   Loading features from cached file /home/yeongjoon/data/GermEVAL2014_NER/cached_test_bert-base-multilingual-cased_128
+04/08/2020 16:40:59 - INFO - __main__ -   ***** Running evaluation  *****
+04/08/2020 16:40:59 - INFO - __main__ -     Num examples = 5100
+04/08/2020 16:40:59 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/160 [00:00<?, ?it/s]Evaluating:   1%|          | 1/160 [00:00<00:27,  5.79it/s]Evaluating:   1%|▏         | 2/160 [00:00<00:27,  5.72it/s]Evaluating:   2%|▏         | 3/160 [00:00<00:27,  5.67it/s]Evaluating:   2%|▎         | 4/160 [00:00<00:27,  5.70it/s]Evaluating:   3%|▎         | 5/160 [00:00<00:27,  5.62it/s]Evaluating:   4%|▍         | 6/160 [00:01<00:27,  5.62it/s]Evaluating:   4%|▍         | 7/160 [00:01<00:27,  5.63it/s]Evaluating:   5%|▌         | 8/160 [00:01<00:27,  5.59it/s]Evaluating:   6%|▌         | 9/160 [00:01<00:27,  5.53it/s]Evaluating:   6%|▋         | 10/160 [00:01<00:27,  5.47it/s]Evaluating:   7%|▋         | 11/160 [00:01<00:26,  5.52it/s]Evaluating:   8%|▊         | 12/160 [00:02<00:27,  5.47it/s]Evaluating:   8%|▊         | 13/160 [00:02<00:27,  5.42it/s]Evaluating:   9%|▉         | 14/160 [00:02<00:26,  5.44it/s]Evaluating:   9%|▉         | 15/160 [00:02<00:26,  5.45it/s]Evaluating:  10%|█         | 16/160 [00:02<00:26,  5.45it/s]Evaluating:  11%|█         | 17/160 [00:03<00:26,  5.42it/s]Evaluating:  11%|█▏        | 18/160 [00:03<00:26,  5.42it/s]Evaluating:  12%|█▏        | 19/160 [00:03<00:25,  5.46it/s]Evaluating:  12%|█▎        | 20/160 [00:03<00:25,  5.43it/s]Evaluating:  13%|█▎        | 21/160 [00:03<00:25,  5.41it/s]Evaluating:  14%|█▍        | 22/160 [00:04<00:25,  5.41it/s]Evaluating:  14%|█▍        | 23/160 [00:04<00:25,  5.43it/s]Evaluating:  15%|█▌        | 24/160 [00:04<00:25,  5.40it/s]Evaluating:  16%|█▌        | 25/160 [00:04<00:25,  5.40it/s]Evaluating:  16%|█▋        | 26/160 [00:04<00:24,  5.38it/s]Evaluating:  17%|█▋        | 27/160 [00:04<00:24,  5.40it/s]Evaluating:  18%|█▊        | 28/160 [00:05<00:24,  5.41it/s]Evaluating:  18%|█▊        | 29/160 [00:05<00:24,  5.37it/s]Evaluating:  19%|█▉        | 30/160 [00:05<00:24,  5.32it/s]Evaluating:  19%|█▉        | 31/160 [00:05<00:23,  5.38it/s]Evaluating:  20%|██        | 32/160 [00:05<00:23,  5.39it/s]Evaluating:  21%|██        | 33/160 [00:06<00:23,  5.41it/s]Evaluating:  21%|██▏       | 34/160 [00:06<00:24,  5.22it/s]Evaluating:  22%|██▏       | 35/160 [00:06<00:23,  5.21it/s]Evaluating:  22%|██▎       | 36/160 [00:06<00:23,  5.23it/s]Evaluating:  23%|██▎       | 37/160 [00:06<00:23,  5.29it/s]Evaluating:  24%|██▍       | 38/160 [00:07<00:23,  5.30it/s]Evaluating:  24%|██▍       | 39/160 [00:07<00:22,  5.27it/s]Evaluating:  25%|██▌       | 40/160 [00:07<00:22,  5.28it/s]Evaluating:  26%|██▌       | 41/160 [00:07<00:22,  5.30it/s]Evaluating:  26%|██▋       | 42/160 [00:07<00:22,  5.34it/s]Evaluating:  27%|██▋       | 43/160 [00:07<00:21,  5.34it/s]Evaluating:  28%|██▊       | 44/160 [00:08<00:22,  5.25it/s]Evaluating:  28%|██▊       | 45/160 [00:08<00:21,  5.26it/s]Evaluating:  29%|██▉       | 46/160 [00:08<00:21,  5.31it/s]Evaluating:  29%|██▉       | 47/160 [00:08<00:21,  5.29it/s]Evaluating:  30%|███       | 48/160 [00:08<00:21,  5.31it/s]Evaluating:  31%|███       | 49/160 [00:09<00:20,  5.34it/s]Evaluating:  31%|███▏      | 50/160 [00:09<00:20,  5.29it/s]Evaluating:  32%|███▏      | 51/160 [00:09<00:20,  5.31it/s]Evaluating:  32%|███▎      | 52/160 [00:09<00:20,  5.27it/s]Evaluating:  33%|███▎      | 53/160 [00:09<00:20,  5.23it/s]Evaluating:  34%|███▍      | 54/160 [00:10<00:20,  5.20it/s]Evaluating:  34%|███▍      | 55/160 [00:10<00:19,  5.26it/s]Evaluating:  35%|███▌      | 56/160 [00:10<00:19,  5.27it/s]Evaluating:  36%|███▌      | 57/160 [00:10<00:19,  5.32it/s]Evaluating:  36%|███▋      | 58/160 [00:10<00:19,  5.30it/s]Evaluating:  37%|███▋      | 59/160 [00:10<00:19,  5.30it/s]Evaluating:  38%|███▊      | 60/160 [00:11<00:18,  5.28it/s]Evaluating:  38%|███▊      | 61/160 [00:11<00:18,  5.29it/s]Evaluating:  39%|███▉      | 62/160 [00:11<00:18,  5.26it/s]Evaluating:  39%|███▉      | 63/160 [00:11<00:18,  5.27it/s]Evaluating:  40%|████      | 64/160 [00:11<00:18,  5.24it/s]Evaluating:  41%|████      | 65/160 [00:12<00:18,  5.25it/s]Evaluating:  41%|████▏     | 66/160 [00:12<00:18,  5.16it/s]Evaluating:  42%|████▏     | 67/160 [00:12<00:18,  5.11it/s]Evaluating:  42%|████▎     | 68/160 [00:12<00:18,  5.07it/s]Evaluating:  43%|████▎     | 69/160 [00:12<00:17,  5.12it/s]Evaluating:  44%|████▍     | 70/160 [00:13<00:17,  5.18it/s]Evaluating:  44%|████▍     | 71/160 [00:13<00:17,  5.08it/s]Evaluating:  45%|████▌     | 72/160 [00:13<00:17,  4.98it/s]Evaluating:  46%|████▌     | 73/160 [00:13<00:17,  5.01it/s]Evaluating:  46%|████▋     | 74/160 [00:13<00:17,  4.98it/s]Evaluating:  47%|████▋     | 75/160 [00:14<00:16,  5.05it/s]Evaluating:  48%|████▊     | 76/160 [00:14<00:16,  5.00it/s]Evaluating:  48%|████▊     | 77/160 [00:14<00:16,  4.93it/s]Evaluating:  49%|████▉     | 78/160 [00:14<00:16,  4.89it/s]Evaluating:  49%|████▉     | 79/160 [00:14<00:16,  4.89it/s]Evaluating:  50%|█████     | 80/160 [00:15<00:16,  4.94it/s]Evaluating:  51%|█████     | 81/160 [00:15<00:15,  4.94it/s]Evaluating:  51%|█████▏    | 82/160 [00:15<00:15,  4.97it/s]Evaluating:  52%|█████▏    | 83/160 [00:15<00:15,  4.97it/s]Evaluating:  52%|█████▎    | 84/160 [00:15<00:15,  5.00it/s]Evaluating:  53%|█████▎    | 85/160 [00:16<00:15,  4.94it/s]Evaluating:  54%|█████▍    | 86/160 [00:16<00:15,  4.87it/s]Evaluating:  54%|█████▍    | 87/160 [00:16<00:15,  4.85it/s]Evaluating:  55%|█████▌    | 88/160 [00:16<00:14,  4.82it/s]Evaluating:  56%|█████▌    | 89/160 [00:16<00:14,  4.78it/s]Evaluating:  56%|█████▋    | 90/160 [00:17<00:14,  4.71it/s]Evaluating:  57%|█████▋    | 91/160 [00:17<00:14,  4.71it/s]Evaluating:  57%|█████▊    | 92/160 [00:17<00:14,  4.71it/s]Evaluating:  58%|█████▊    | 93/160 [00:17<00:13,  4.80it/s]Evaluating:  59%|█████▉    | 94/160 [00:18<00:13,  4.83it/s]Evaluating:  59%|█████▉    | 95/160 [00:18<00:13,  4.81it/s]Evaluating:  60%|██████    | 96/160 [00:18<00:13,  4.87it/s]Evaluating:  61%|██████    | 97/160 [00:18<00:12,  4.87it/s]Evaluating:  61%|██████▏   | 98/160 [00:18<00:12,  4.88it/s]Evaluating:  62%|██████▏   | 99/160 [00:19<00:12,  4.88it/s]Evaluating:  62%|██████▎   | 100/160 [00:19<00:12,  4.90it/s]Evaluating:  63%|██████▎   | 101/160 [00:19<00:12,  4.85it/s]Evaluating:  64%|██████▍   | 102/160 [00:19<00:12,  4.80it/s]Evaluating:  64%|██████▍   | 103/160 [00:19<00:11,  4.79it/s]Evaluating:  65%|██████▌   | 104/160 [00:20<00:11,  4.78it/s]Evaluating:  66%|██████▌   | 105/160 [00:20<00:11,  4.84it/s]Evaluating:  66%|██████▋   | 106/160 [00:20<00:11,  4.85it/s]Evaluating:  67%|██████▋   | 107/160 [00:20<00:10,  4.87it/s]Evaluating:  68%|██████▊   | 108/160 [00:20<00:10,  4.86it/s]Evaluating:  68%|██████▊   | 109/160 [00:21<00:10,  4.78it/s]Evaluating:  69%|██████▉   | 110/160 [00:21<00:10,  4.79it/s]Evaluating:  69%|██████▉   | 111/160 [00:21<00:10,  4.76it/s]Evaluating:  70%|███████   | 112/160 [00:21<00:09,  4.83it/s]Evaluating:  71%|███████   | 113/160 [00:21<00:09,  4.83it/s]Evaluating:  71%|███████▏  | 114/160 [00:22<00:09,  4.78it/s]Evaluating:  72%|███████▏  | 115/160 [00:22<00:09,  4.79it/s]Evaluating:  72%|███████▎  | 116/160 [00:22<00:09,  4.84it/s]Evaluating:  73%|███████▎  | 117/160 [00:22<00:08,  4.79it/s]Evaluating:  74%|███████▍  | 118/160 [00:23<00:08,  4.78it/s]Evaluating:  74%|███████▍  | 119/160 [00:23<00:08,  4.78it/s]Evaluating:  75%|███████▌  | 120/160 [00:23<00:08,  4.74it/s]Evaluating:  76%|███████▌  | 121/160 [00:23<00:08,  4.71it/s]Evaluating:  76%|███████▋  | 122/160 [00:23<00:08,  4.66it/s]Evaluating:  77%|███████▋  | 123/160 [00:24<00:07,  4.68it/s]Evaluating:  78%|███████▊  | 124/160 [00:24<00:07,  4.67it/s]Evaluating:  78%|███████▊  | 125/160 [00:24<00:07,  4.68it/s]Evaluating:  79%|███████▉  | 126/160 [00:24<00:07,  4.74it/s]Evaluating:  79%|███████▉  | 127/160 [00:24<00:06,  4.76it/s]Evaluating:  80%|████████  | 128/160 [00:25<00:06,  4.75it/s]Evaluating:  81%|████████  | 129/160 [00:25<00:06,  4.74it/s]Evaluating:  81%|████████▏ | 130/160 [00:25<00:06,  4.68it/s]Evaluating:  82%|████████▏ | 131/160 [00:25<00:06,  4.68it/s]Evaluating:  82%|████████▎ | 132/160 [00:25<00:05,  4.70it/s]Evaluating:  83%|████████▎ | 133/160 [00:26<00:05,  4.66it/s]Evaluating:  84%|████████▍ | 134/160 [00:26<00:05,  4.64it/s]Evaluating:  84%|████████▍ | 135/160 [00:26<00:05,  4.62it/s]Evaluating:  85%|████████▌ | 136/160 [00:26<00:05,  4.63it/s]Evaluating:  86%|████████▌ | 137/160 [00:27<00:04,  4.61it/s]Evaluating:  86%|████████▋ | 138/160 [00:27<00:04,  4.62it/s]Evaluating:  87%|████████▋ | 139/160 [00:27<00:04,  4.65it/s]Evaluating:  88%|████████▊ | 140/160 [00:27<00:04,  4.64it/s]Evaluating:  88%|████████▊ | 141/160 [00:27<00:04,  4.58it/s]Evaluating:  89%|████████▉ | 142/160 [00:28<00:03,  4.54it/s]Evaluating:  89%|████████▉ | 143/160 [00:28<00:03,  4.53it/s]Evaluating:  90%|█████████ | 144/160 [00:28<00:03,  4.52it/s]Evaluating:  91%|█████████ | 145/160 [00:28<00:03,  4.55it/s]Evaluating:  91%|█████████▏| 146/160 [00:29<00:03,  4.55it/s]Evaluating:  92%|█████████▏| 147/160 [00:29<00:02,  4.54it/s]Evaluating:  92%|█████████▎| 148/160 [00:29<00:02,  4.52it/s]Evaluating:  93%|█████████▎| 149/160 [00:29<00:02,  4.52it/s]Evaluating:  94%|█████████▍| 150/160 [00:29<00:02,  4.55it/s]Evaluating:  94%|█████████▍| 151/160 [00:30<00:01,  4.51it/s]Evaluating:  95%|█████████▌| 152/160 [00:30<00:01,  4.51it/s]Evaluating:  96%|█████████▌| 153/160 [00:30<00:01,  4.49it/s]Evaluating:  96%|█████████▋| 154/160 [00:30<00:01,  4.48it/s]Evaluating:  97%|█████████▋| 155/160 [00:31<00:01,  4.49it/s]Evaluating:  98%|█████████▊| 156/160 [00:31<00:00,  4.46it/s]Evaluating:  98%|█████████▊| 157/160 [00:31<00:00,  4.50it/s]Evaluating:  99%|█████████▉| 158/160 [00:31<00:00,  4.51it/s]Evaluating:  99%|█████████▉| 159/160 [00:31<00:00,  4.53it/s]Evaluating: 100%|██████████| 160/160 [00:32<00:00,  4.53it/s]Evaluating: 100%|██████████| 160/160 [00:32<00:00,  4.97it/s]
+04/08/2020 16:41:32 - INFO - __main__ -   ***** Eval results  *****
+04/08/2020 16:41:32 - INFO - __main__ -     f1 = 0.861865978550117
+04/08/2020 16:41:32 - INFO - __main__ -     loss = 0.07252377077820711
+04/08/2020 16:41:32 - INFO - __main__ -     precision = 0.8587497991322514
+04/08/2020 16:41:32 - INFO - __main__ -     recall = 0.8650048559404337
