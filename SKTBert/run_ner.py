@@ -45,6 +45,10 @@ from utils_ner import convert_examples_to_features, get_labels, read_examples_fr
 
 from tokenization_kobert import KoBertTokenizer
 
+# CRF Adding
+
+from modeling_NER_bert_crf import BertCRFForTokenClassification
+
 try:
     from torch.utils.tensorboard import SummaryWriter
 except ImportError:
@@ -593,12 +597,21 @@ def main():
     #     cache_dir=args.cache_dir if args.cache_dir else None,
     #     **tokenizer_args,
     # )
-    model = AutoModelForTokenClassification.from_pretrained(
+
+    # CRF Adding
+    model = BertCRFForTokenClassification.from_pretrained(
         args.model_name_or_path,
         from_tf=bool(".ckpt" in args.model_name_or_path),
         config=config,
         cache_dir=args.cache_dir if args.cache_dir else None,
     )
+
+    # model = AutoModelForTokenClassification.from_pretrained(
+    #     args.model_name_or_path,
+    #     from_tf=bool(".ckpt" in args.model_name_or_path),
+    #     config=config,
+    #     cache_dir=args.cache_dir if args.cache_dir else None,
+    # )
 
     if args.local_rank == 0:
         torch.distributed.barrier()  # Make sure only the first process in distributed training will download model & vocab
@@ -647,7 +660,10 @@ def main():
         logger.info("Evaluate the following checkpoints: %s", checkpoints)
         for checkpoint in checkpoints:
             global_step = checkpoint.split("-")[-1] if len(checkpoints) > 1 else ""
-            model = AutoModelForTokenClassification.from_pretrained(checkpoint)
+            # CRF Addition
+            model = BertCRFForTokenClassification.from_pretrained(checkpoint)
+            # model = AutoModelForTokenClassification.from_pretrained(checkpoint)
+
             model.to(args.device)
             result, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev", prefix=global_step)
             if global_step:
@@ -663,7 +679,10 @@ def main():
 
         tokenizer = KoBertTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
         # tokenizer = AutoTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
-        model = AutoModelForTokenClassification.from_pretrained(args.output_dir)
+
+        # CRF Addition
+        model = BertCRFForTokenClassification.from_pretrained(args.output_dir)
+       #  model = AutoModelForTokenClassification.from_pretrained(args.output_dir)
         model.to(args.device)
         result, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="test")
         # Save results
