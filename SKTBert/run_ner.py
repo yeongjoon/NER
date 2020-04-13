@@ -282,7 +282,8 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
                     batch[2] if args.model_type in ["bert", "xlnet"] else None
                 )  # XLM and RoBERTa don"t use segment_ids
             outputs = model(**inputs)
-            tmp_eval_loss, logits = outputs[:2]
+            # Predict와 Evalute 모두 호환될 수 있도록 조정
+            tmp_eval_loss, preds_tensor = outputs[0], outputs[-1]
 
             if args.n_gpu > 1:
                 tmp_eval_loss = tmp_eval_loss.mean()  # mean() to average on multi-gpu parallel evaluating
@@ -290,14 +291,14 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
             eval_loss += tmp_eval_loss.item()
         nb_eval_steps += 1
         if preds is None:
-            preds = logits.detach().cpu().numpy()
+            preds = preds_tensor.detach().cpu().numpy()
             out_label_ids = inputs["labels"].detach().cpu().numpy()
         else:
-            preds = np.append(preds, logits.detach().cpu().numpy(), axis=0)
+            preds = np.append(preds, preds_tensor.detach().cpu().numpy(), axis=0)
             out_label_ids = np.append(out_label_ids, inputs["labels"].detach().cpu().numpy(), axis=0)
 
     eval_loss = eval_loss / nb_eval_steps
-    preds = np.argmax(preds, axis=2)
+    # preds = np.argmax(preds, axis=2) # 이미 CRF에서 decoding을 통해서 label을 출력하기 때문에 np.armax할 필요 없음
 
     label_map = {i: label for i, label in enumerate(labels)}
 
@@ -512,6 +513,15 @@ def main():
     parser.add_argument("--local_rank", type=int, default=-1, help="For distributed training: local_rank")
     parser.add_argument("--server_ip", type=str, default="", help="For distant debugging.")
     parser.add_argument("--server_port", type=str, default="", help="For distant debugging.")
+
+    parser.add_argument(
+        "--log_filename",
+        default='./test.log',
+        type=str,
+        required=False,
+        help="Path to log file of the experiment.",
+    )
+
     args = parser.parse_args()
 
     if (
@@ -550,6 +560,7 @@ def main():
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
         datefmt="%m/%d/%Y %H:%M:%S",
+        filename=args.log_filename,
         level=logging.INFO if args.local_rank in [-1, 0] else logging.WARN,
     )
     logger.warning(

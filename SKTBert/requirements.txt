@@ -1,0 +1,10 @@
+transformers==2.8.0
+numpy==1.18.2
+torch==1.4.0
+sentencepiece==0.1.85
+tqdm==4.45.0
+seqeval==0.0.12
+pytorchcrf==1.2.0
+apex==0.9.10dev
+ptvsd==4.3.2
+tensorboardX==2.0

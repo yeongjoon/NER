@@ -2,8 +2,7 @@ from transformers.modeling_bert import BertPreTrainedModel, BertModel
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss
 import torch
-from torchcrf import CRF
-
+from pytorchcrf import CRF
 
 class BertCRFForTokenClassification(BertPreTrainedModel):
     """ New class for BERT + CRF NER Tagging based on huggingface bert model.
@@ -102,8 +101,8 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
 
             # CRF 위해서 mask 생성 ( -100 index 처리를 위해서 )
             mask_tensor = torch.where(
-                labels >= 0, torch.ones(labels.shape),
-                torch.zeros(labels.shape)
+                labels >= 0, torch.ones(labels.shape).to(logits.device),
+                torch.zeros(labels.shape).to(logits.device)
             )
             mask_tensor = mask_tensor.to(torch.uint8)
 
@@ -116,7 +115,7 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
                 )
 
 
-                # active 변수들 원래대로 꼴 원상복귀
+                # active 변수들 원래대로 꼴 원상복귀 [batch_size, seq_length]
 
                 active_logits = active_logits.view(input_ids.shape[0], input_ids.shape[-1], -1)
                 active_labels = active_labels.view(input_ids.shape[0], -1)
@@ -139,5 +138,15 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
             # 학습도 제거하고 했으니까 decode도 우선은 빼고 한 후에 갖다 붙이는게 맞을 듯?
             sequence_of_tags = self.crf.decode(logits[:, 1:])
 
+        # Sequence_of_tags의 맨 앞 [CLS] 토큰 삭제한 부분을 다시 채워넣어야 하기 때문에 Dummy 토큰을 사용
+        # 이 때 어차피 f1 score 계산시에 이 부분은 빠지기 때문에 값에 대한 상관은 없음
+        dummy_tag = torch.zeros([input_ids.shape[0], 1], dtype=torch.long).to(sequence_of_tags.device)
+        sequence_of_tags = torch.cat((dummy_tag, sequence_of_tags.squeeze(0)), dim=-1) # [batch, seq]
+
         outputs = outputs + (sequence_of_tags,)
         return outputs  # (loss), scores, (hidden_states), (attentions)
+
+if __name__ == '__main__':
+    import logging
+
+    print("Why not logging")
