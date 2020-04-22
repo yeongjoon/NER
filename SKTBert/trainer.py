@@ -107,7 +107,9 @@ class Trainer(object):
         self.results = {}
 
     def train(self):
-        model, tokenizer = self._prepare_model(args=self.args, labels=self.labels, num_labels=self.num_labels, mode='train')
+        model, tokenizer = self._prepare_model(args=self.args, labels=self.labels,
+                                               num_labels=self.num_labels, mode='train',
+                                               model_dir=self.args.model_name_or_path)
         train_dataset = load_and_cache_examples(args=self.args,
                                                 tokenizer=tokenizer,
                                                 labels=self.labels,
@@ -120,7 +122,9 @@ class Trainer(object):
     def evaluate(self):
         #TODO evaluate all checkpoint는 나중에 구현
         if self.args.local_rank in [-1, 0]:
-            model, tokenizer = self._prepare_model(args=self.args, labels=self.labels, num_labels=self.num_labels, mode='eval')
+            model, tokenizer = self._prepare_model(args=self.args, labels=self.labels,
+                                                   num_labels=self.num_labels, mode='eval',
+                                                   model_dir=self.args.output_dir)
             eval_dataset = load_and_cache_examples(args=self.args,
                                                    tokenizer=tokenizer,
                                                    labels=self.labels,
@@ -136,7 +140,9 @@ class Trainer(object):
 
     def predict(self):
         if self.args.local_rank in [-1, 0]:
-            model, tokenizer = self._prepare_model(args=self.args, labels=self.labels, num_labels=self.num_labels, mode='eval')
+            model, tokenizer = self._prepare_model(args=self.args, labels=self.labels,
+                                                   num_labels=self.num_labels, mode='predict',
+                                                   model_dir=self.args.output_dir)
             test_dataset = load_and_cache_examples(args=self.args,
                                                    tokenizer=tokenizer,
                                                    labels=self.labels,
@@ -306,7 +312,15 @@ class Trainer(object):
                         if (
                                 args.local_rank == -1 and args.evaluate_during_training
                         ):  # Only evaluate when single GPU otherwise metrics may not average well
-                            results, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev")
+
+                            #TODO 이걸 cache로 저장하는게 맞을지 매번 부르는게 맞을 지 고민
+                            eval_dataset = load_and_cache_examples(args=self.args,
+                                                                   tokenizer=tokenizer,
+                                                                   labels=self.labels,
+                                                                   pad_token_label_id=self.pad_token_label_id,
+                                                                   mode='dev')
+
+                            results, _ = self._evaluate(args, model, eval_dataset, labels, pad_token_label_id, mode="dev", prefix="")
                             for key, value in results.items():
                                 tb_writer.add_scalar("eval_{}".format(key), value, global_step)
                         tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
@@ -419,7 +433,7 @@ class Trainer(object):
 
         return results, preds_list
 
-    def _prepare_model(self, args, labels, num_labels, mode='train'):
+    def _prepare_model(self, args, labels, num_labels, mode='train', model_dir=""):
         """ prepare model and tokenizer for the trainer.
         :param args: parsed argument.
         :param labels: label list of NER.
@@ -432,7 +446,7 @@ class Trainer(object):
 
         args.model_type = args.model_type.lower()
         config = AutoConfig.from_pretrained(
-            args.config_name if args.config_name else args.model_name_or_path,
+            args.config_name if args.config_name else model_dir,
             num_labels=num_labels,
             id2label={str(i): label for i, label in enumerate(labels)},
             label2id={label: i for i, label in enumerate(labels)},
@@ -443,16 +457,16 @@ class Trainer(object):
 
         if mode == 'train':
             tokenizer = KoBertTokenizer.from_pretrained(
-                args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
+                args.tokenizer_name if args.tokenizer_name else model_dir,
                 cache_dir=args.cache_dir if args.cache_dir else None,
                 **tokenizer_args,
             )
         else:
-            tokenizer = KoBertTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
+            tokenizer = KoBertTokenizer.from_pretrained(model_dir, **tokenizer_args)
         # KoBERT tokenizer로 강제 지정
 
         # tokenizer = AutoTokenizer.from_pretrained(
-        #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
+        #     args.tokenizer_name if args.tokenizer_name else model_dir,
         #     cache_dir=args.cache_dir if args.cache_dir else None,
         #     **tokenizer_args,
         # )
@@ -460,14 +474,14 @@ class Trainer(object):
         # CRF Adding
         if mode == 'train':
             model = BertCRFForTokenClassification.from_pretrained(
-                args.model_name_or_path,
-                from_tf=bool(".ckpt" in args.model_name_or_path),
+                model_dir,
+                from_tf=bool(".ckpt" in model_dir),
                 config=config,
                 cache_dir=args.cache_dir if args.cache_dir else None,
             )
         else:
-            logger.info("Evaluate the following checkpoints: %s", [args.output_dir])
-            model = BertCRFForTokenClassification.from_pretrained(args.output_dir)
+            logger.info("Evaluate the following checkpoints: %s", [model_dir])
+            model = BertCRFForTokenClassification.from_pretrained(model_dir)
 
         # model = AutoModelForTokenClassification.from_pretrained(
         #     args.model_name_or_path,
